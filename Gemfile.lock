@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:sungwoncho/has_friendship.git
+  revision: 857b36ad8124423a1e87f2a885c0e4dcb7f33e4c
+  specs:
+    has_friendship (1.1.2)
+      rails (>= 4.2.0, < 5.3.0)
+      stateful_enum
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -175,6 +183,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stateful_enum (0.4.0)
     temple (0.8.0)
     thor (0.20.0)
     thread_safe (0.3.6)
@@ -201,12 +210,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug
   coffee-rails (~> 4.2)
   devise
   haml-rails
+  has_friendship!
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mini_magick (~> 4.8)
