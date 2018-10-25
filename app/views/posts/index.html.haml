@@ -6,5 +6,5 @@
       user_post_path(current_user, post),
       method: :delete, 
       data: {confirm: 'Are you sure?'}  
-    %li= link_to 'Edit', edit_user_post_path(current_user, post.id)
+    %li= link_to 'Edit', edit_user_post_path(current_user, post)
   %br
