@@ -8,5 +8,5 @@ class User < ApplicationRecord
   validates :user_name, presence: true, length: 4..12
 
   has_friendship
-  has_many :posts
+  has_many :posts, dependent: :destroy
 end
