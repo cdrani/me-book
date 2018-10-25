@@ -3,6 +3,12 @@
 class RegistrationsController < Devise::RegistrationsController
   before_action :authenticate_user!
 
+  protected
+
+  def after_sign_in_path_for(_resource)
+    'posts'
+  end
+
   private
 
   def sign_up_params
