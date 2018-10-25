@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :user_signed_in?, except: %i[show]
   before_action :set_post, only: %i[show edit destroy]
 
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to @post, success: 'Successfully posted!'
+      redirect_to user_posts_path, success: 'Successfully posted!'
     else
       flash[:alert] = 'Post error.'
       render :new
@@ -31,7 +32,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path
+    redirect_to user_posts_path
   end
 
   private
