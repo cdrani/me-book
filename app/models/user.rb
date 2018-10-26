@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
   has_friendship
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
 end
