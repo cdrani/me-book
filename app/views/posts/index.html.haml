@@ -1,6 +1,7 @@
 - @posts.each do |post|
   %h1= current_user.user_name
   %h1= post.content
+  =button_to 'Like', user_post_likes_path(post), method: :post
   %ul
     %li= link_to 'Delete', 
       user_post_path(current_user, post),
