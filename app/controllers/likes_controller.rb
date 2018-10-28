@@ -10,7 +10,7 @@ class LikesController < ApplicationController
     else
       @post.likes.create(user_id: current_user.id)
     end
-    redirect_to user_posts_path
+    redirect_to posts_path
   end
 
   private

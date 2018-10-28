@@ -4,10 +4,25 @@
   - unless post.likes.empty?
     %p= pluralize(post.likes.count, 'like')
   %div
+    %div
+      %h2 Comments
+      - unless post.comments.empty?
+        - post.comments.each do |comment|
+          %p= comment.user.user_name
+          %p= comment.content
+          - if comment.user == current_user
+            = link_to 'Delete', 
+              post_comment_path(post, comment), 
+              method: :delete, 
+              data: { confirm: 'Are you sure?' }
+      = form_for [post, post.comments.build] do |f|
+        = f.text_area :content, cols: 50, rows: 5
+        = f.submit 'Add comment'
+    %br
     = link_to 'Delete', 
-      user_post_path(current_user, post),
+      post_path(current_user, post),
       method: :delete, 
       data: {confirm: 'Are you sure?'}  
-    = link_to 'Edit', edit_user_post_path(current_user, post)
-    = link_to 'Like', user_post_likes_path(current_user, post), method: :post 
+    = link_to 'Edit', post_path(post)
+    = link_to 'Like', post_likes_path(post), method: :post 
   %br

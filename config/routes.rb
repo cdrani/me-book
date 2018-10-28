@@ -3,10 +3,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
 
-  resources :users do
-    resources :posts do
-      resources :comments
-      resources :likes
-    end
+  resources :posts do
+    resources :comments, only: %i[create destroy]
+    resources :likes, only: [:create]
   end
 end

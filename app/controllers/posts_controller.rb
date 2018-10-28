@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.build
+    @post = current_user.posts.new
   end
 
   def show; end
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to user_posts_path, success: 'Successfully posted!'
+      redirect_to @post, success: 'Successfully posted!'
     else
       flash[:alert] = 'Post error.'
       render :new
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to user_posts_path, success: 'Post updated.'
+      redirect_to post_path, success: 'Post updated.'
     else
       flash[:alert] = 'Post not updated.'
       render :edit
@@ -38,13 +38,13 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to user_posts_path, success: 'Post deleted.'
+    redirect_to posts_path, success: 'Post deleted.'
   end
 
   private
 
   def set_post
-    @post ||= current_user.posts.find(params[:id])
+    @post ||= current_user.posts.find_by(id: params[:id])
   end
 
   def post_params

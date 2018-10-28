@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_post
+  before_action :set_post, only: %i[create destroy]
 
   def create
     @comment = @post.comments.build(comment_params)
@@ -9,18 +9,21 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:success] = 'Comment successfully posted!'
-      redirect_back
+      redirect_to posts_path
     else
       flash[:alert] = 'Comment could not be added to post.'
-      render user_posts_path
+      render @post
     end
   end
 
   def destroy
     @comment = @post.comments.find(params[:id])
-    @comment.destroy
-    flash[:success] = 'Comment deleted!'
-    redirect_to @post
+
+    if @comment.user_id == current_user.id
+      @comment.destroy
+      flash[:success] = 'Comment deleted!'
+      redirect_to posts_path
+    end
   end
 
   private
