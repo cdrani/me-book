@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @posts = current_user.posts
+    @posts = Post.timeline.newest
   end
 
   def new

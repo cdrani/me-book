@@ -6,4 +6,11 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  # def self.timeline
+  #   Post.joins(:user, user: [:friends])
+  # end
+  #
+  scope :timeline, -> { Post.joins(:user, user: [:friends]) }
+  scope :newest, -> { Post.order(created_at: :desc) }
 end
