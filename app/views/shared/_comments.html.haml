@@ -1,0 +1,9 @@
+- if comments.exists?
+  - comments.each do |comment|
+    %p= comment.user.user_name
+    %p= comment.content
+    - if comment.user == current_user
+      = link_to 'Delete', 
+        post_comment_path(post, comment), 
+        method: :delete, 
+        data: { confirm: 'Are you sure?' }
