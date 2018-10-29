@@ -20,7 +20,7 @@
         = f.submit 'Add comment'
     %br
     = link_to 'Delete', 
-      post_path(current_user, post),
+      post_path(post),
       method: :delete, 
       data: {confirm: 'Are you sure?'}  
     = link_to 'Edit', post_path(post)
