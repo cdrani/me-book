@@ -1,5 +1,4 @@
-%ul 
-  %li= @profile.birthdate
-  %li= @profile.gender
-  %li= @profile.bio
-  %li= @profile.locale
+- if @user == current_user
+  = link_to 'Edit Profile', edit_profile_path(@user.user_name)
+- @posts.each do |post|
+  = render partial: 'posts/post', locals: {post: post}
