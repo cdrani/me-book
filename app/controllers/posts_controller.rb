@@ -6,7 +6,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @posts = Post.timeline.newest
+    @posts = if current_user.friends.exists?
+               Post.timeline.newest
+             else
+               current_user.posts
+             end
   end
 
   def new
