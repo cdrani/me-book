@@ -1,4 +1,8 @@
-= form_for profile, url: {action: 'update'} do |f|
+= form_for profile, url: { action: 'update' } do |f|
+  = f.label :avatar
+  = f.file_field :avatar
+  = f.label :cover
+  = f.file_field :cover
   = f.label :birthdate
   = f.date_select :birthdate
   = f.label :gender

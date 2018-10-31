@@ -1,7 +1,8 @@
 - if @user == current_user
-  - if @user.profile.present?
-    = link_to 'Edit Profile', edit_profile_path(@user.user_name)
-  - else
-    - link_to 'Create Profile', create_profile_path(@user.user_name)
+  = link_to 'Edit Profile', edit_profile_path(@user.user_name)
+- if @profile.avatar.attached?
+  = image_tag url_for(@profile.avatar)
+- if @profile.cover.attached?
+  = image_tag url_for(@profile.cover)
 - @posts.each do |post|
   = render partial: 'posts/post', locals: {post: post}

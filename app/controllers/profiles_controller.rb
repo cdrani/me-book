@@ -6,7 +6,6 @@ class ProfilesController < ApplicationController
   def show
     @profile = @user.profile
     @posts = current_user.posts.order('created_at desc')
-    console
   end
 
   def edit
@@ -40,7 +39,8 @@ class ProfilesController < ApplicationController
                                 :locale,
                                 :birthdate,
                                 :gender,
-                                images: [])
+                                :avatar,
+                                :cover)
   end
 
   def set_user
