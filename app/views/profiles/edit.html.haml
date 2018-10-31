@@ -1,9 +1,1 @@
-= form_for @profile do |f|
-  = f.label :birthdate
-  = f.date_select :birthdate
-  = f.label :gender
-  = f.text_field :gender
-  = f.label :location
-  = f.text_field :location
-  = f.label :bio
-  = f.text_area :bio
+= render partial: 'form' , locals: { profile: @profile }

@@ -1,0 +1,10 @@
+= form_for profile, url: {action: 'update'} do |f|
+  = f.label :birthdate
+  = f.date_select :birthdate
+  = f.label :gender
+  = f.text_field :gender
+  = f.label :locale
+  = f.text_field :locale
+  = f.label :bio
+  = f.text_area :bio
+  = f.submit 'Save'
