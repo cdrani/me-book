@@ -1,0 +1,8 @@
+- if @user == current_user
+  = link_to 'Edit Profile', edit_profile_path(@user.user_name)
+- if @profile.avatar.attached?
+  = image_tag @profile.avatar.variant(resize: '300x300!')
+- if @profile.cover.attached?
+  = image_tag @profile.cover.variant(resize: '1200x500!')
+- @posts.each do |post|
+  = render partial: 'posts/post', locals: {post: post}
