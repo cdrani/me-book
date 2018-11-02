@@ -6,4 +6,10 @@ module ApplicationHelper
 
     image_tag 'default_avatar.png', width: 96, height: 96
   end
+
+  def friend_labels(user)
+    label = 'Pending' if current_user.pending_friends.includes(user)
+    label = 'Requested' if current_user.requested_friends.includes(user)
+    "<p>#{label}</p>".html_safe
+  end
 end

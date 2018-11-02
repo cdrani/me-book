@@ -19,4 +19,12 @@ class User < ApplicationRecord
     profile.user_id = id
     profile.save
   end
+
+  scope :not_my_friends, ->(current_user) {
+    where
+      .not(id: current_user.id)
+      .where.not(id: current_user.friend_ids)
+      .where.not(id: current_user.requested_friend_ids)
+      .where.not(id: current_user.pending_friend_ids)
+  }
 end

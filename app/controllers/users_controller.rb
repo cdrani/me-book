@@ -2,6 +2,9 @@
 
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @not_friends_yet = User.not_my_friends(current_user)
+    @pending_friends = current_user.pending_friends
+    @requested_friends = current_user.requested_friends
+    @friends = current_user.friends
   end
 end
