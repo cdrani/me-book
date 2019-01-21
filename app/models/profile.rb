@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Profile < ApplicationRecord
+  before_create :set_default_images
   belongs_to :user
 
   has_one_attached :avatar
@@ -14,11 +15,25 @@ class Profile < ApplicationRecord
   # validates :name, allow_blank: true,
   #                  length: { minimum: 3 }
 
+  private
+
   def min_age
     if birthdate.blank? || birthdate > Date.today - 13.years
       errors.add(
         :birthdate, 'Minimum age requirement of 13 years old.'
       )
     end
+  end
+
+  def set_default_images
+    pics = rand(1..5)
+    avatar.attach(io: File.open(
+      Rails.root.join('app', 'assets', 'images', 'default_avatar.png')
+    ), filename: 'default_avatar.png', content_type: 'image/png')
+
+    cover.attach(io: File.open(
+      Rails.root.join('app', 'assets', 'images',
+                      "fb_cover_#{pics}.jpg")
+    ), filename: "fb_cover_#{pics}.jpg", content_type: 'image/jpg')
   end
 end
