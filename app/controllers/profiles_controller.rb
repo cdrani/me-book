@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = @user.profile
-    @posts = current_user.posts.order('created_at desc')
+    @posts = Post.timeline.newest
   end
 
   def edit
@@ -34,13 +34,14 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params
-      .require(:profile).permit(:name,
-                                :bio,
-                                :locale,
-                                :birthdate,
-                                :gender,
-                                :avatar,
-                                :cover)
+      .require(:profile)
+      .permit(:name,
+              :bio,
+              :locale,
+              :birthdate,
+              :gender,
+              :avatar,
+              :cover)
   end
 
   def set_user

@@ -8,10 +8,6 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  # def self.timeline
-  #   Post.joins(:user, user: [:friends])
-  # end
-  #
   scope :timeline, -> { Post.joins(:user, user: [:friends]) }
   scope :newest, -> { Post.order(created_at: :desc) }
 end

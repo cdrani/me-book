@@ -9,17 +9,16 @@ class LikesController < ApplicationController
       Look for other posts to like.'
     else
       @post.likes.create(user_id: current_user.id)
-      create_notification(@post)
+      like = Like.where(post_id: @post.id)
+      create_notification(@post, like)
     end
     redirect_to posts_path
   end
 
   private
 
-  def create_notification(post)
+  def create_notification(post, like)
     return if post.user.id == current_user.id
-
-    like = Like.where(post_id: post.id)
 
     Notification.create(user_id: post.user.id,
                         notified_by_id: current_user.id,
