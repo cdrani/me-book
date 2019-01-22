@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'notifications', to: 'notifications#index'
+  get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :users, only: [:index] do
     post 'add_friend/:id', to: 'users#add_friend', as: :add_friend
