@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      create_notifcation(@post, @comment)
+      create_notification(@post, @comment)
       flash[:success] = 'Comment successfully posted!'
       redirect_to posts_path
     else
@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
   end
 
-  def create_notifcation(post, comment)
+  def create_notification(post, comment)
     return if post.user.id == current_user.id
 
     Notification.create(user_id: post.user.id,
