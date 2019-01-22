@@ -8,5 +8,6 @@ class Notification < ApplicationRecord
   validates :user_id, presence: true
   validates :notified_by_id, presence: true
   validates :post_id, presence: true
+  validates :identifier, presence: true
   validates :notice_type, presence: true
 end

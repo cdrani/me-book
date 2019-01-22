@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
+      create_notifcation(@post, @comment)
       flash[:success] = 'Comment successfully posted!'
       redirect_to posts_path
     else
@@ -19,11 +20,11 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @post.comments.find(params[:id])
 
-    if @comment.user_id == current_user.id
-      @comment.destroy
-      flash[:success] = 'Comment deleted!'
-      redirect_to posts_path
-    end
+    return if @comment.user_id != current_user.id
+
+    @comment.destroy
+    flash[:success] = 'Comment deleted!'
+    redirect_to posts_path
   end
 
   private
@@ -34,5 +35,15 @@ class CommentsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:post_id])
+  end
+
+  def create_notifcation(post, comment)
+    return if post.user.id == current_user.id
+
+    Notification.create(user_id: post.user.id,
+                        notified_by_id: current_user.id,
+                        post_id: post.id,
+                        identifier: comment.id,
+                        notice_type: 'comment')
   end
 end
