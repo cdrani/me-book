@@ -19,6 +19,8 @@ class LikesController < ApplicationController
   def create_notification(post)
     return if post.user.id == current_user.id
 
+    like = Like.where(post_id: post.id)
+
     Notification.create(user_id: post.user.id,
                         notified_by_id: current_user.id,
                         post_id: post.id,
