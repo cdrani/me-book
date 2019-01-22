@@ -26,7 +26,7 @@ class Profile < ApplicationRecord
   end
 
   def set_default_images
-    pics = rand(1..5)
+    pics = rand(1...5)
     avatar.attach(io: File.open(
       Rails.root.join('app', 'assets', 'images', 'default_avatar.png')
     ), filename: 'default_avatar.png', content_type: 'image/png')

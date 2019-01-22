@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   def request_friend
     if current_user.friend_request(@friend)
       flash[:success] = "Friend request sent to #{@friend.user_name}"
-      redirect_to user_path
+      redirect_to users_path
     end
     console
   end
