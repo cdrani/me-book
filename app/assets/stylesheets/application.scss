@@ -5,6 +5,23 @@
   padding: 15px;
 }
 
+.small-form-lg {
+  margin: 0 auto;
+  width: 600px;
+}
+
+.text-box {
+  display: inline;
+  height: 300px;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+}
+
+.field-left {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .friends {
   display: flex;
   width: 100%;
