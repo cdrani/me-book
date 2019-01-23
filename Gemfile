@@ -7,6 +7,7 @@ ruby '2.5.1'
 
 gem 'rails', '~> 5.2.1'
 
+gem 'bulma-rails', '~> 0.7.2'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'haml-rails'
