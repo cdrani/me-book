@@ -1,12 +1,15 @@
 - if user_signed_in?
-  %ul
-    %li= link_to 'New Post', new_post_path
-    %li= link_to 'Logout', destroy_user_session_path, method: :delete
-    %li= link_to 'Profile', profile_path(current_user.user_name)
-    %li= link_to 'Users', users_path
-    %li Notifications(#{current_user.notifications.where(read: false).count})
-    = render current_user.notifications.where(read: false).last(5)
-    %li= link_to 'View All', notifications_path
+  %nav.section.section-sm.nav.navbar
+    = link_to 'New Post', new_post_path, class: 'navbar-item'
+    = link_to 'Profile', profile_path(current_user.user_name), class: 'navbar-item'
+    = link_to 'Users', users_path, class: 'navbar-item'
+    .navbar-item.has-dropdown.is-hoverable
+      %a.navbar-link Notifications(#{current_user.notifications.where(read: false).count})
+      .navbar-dropdown
+        = render current_user.notifications.where(read: false).last(5)
+        - if current_user.notifications.where(read: false).present?
+          %a.navbar-item= link_to 'View All', notifications_path
+    = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-item'
 - else 
   %ul
     %li= link_to 'Signin', new_user_session_path
