@@ -1,4 +1,4 @@
 = form_for post do |f|
-  = f.label :content
-  = f.text_field :content
-  = f.submit 'Post'
+  = f.label :content, class: 'label'
+  = f.text_field :content, class: 'textarea'
+  = f.submit 'Post', class: 'button is-medium is-link'
