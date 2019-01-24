@@ -2,6 +2,11 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .small-form {
   width: 400px;
   padding: 15px;
@@ -100,15 +105,10 @@
   padding-bottom: 0;
 }
 
-.dropdown-menu {
-  display: hidden;
-
-  &--active {
-    display: block; 
-  }
+.mt-20 {
+  margin-top: 20px;
 }
 
-.nav {
-  display: flex;
-  justify-content: flex-end;
+.dropdown-content {
+  width: 100%;
 }

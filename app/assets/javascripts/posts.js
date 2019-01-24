@@ -1,11 +1,11 @@
 const triggers = document.getElementsByClassName('dropdown-trigger')
 
-for (var i = 0; i < triggers.length; i++) {
-  console.log('i', i)
-  triggers[i].addEventListener('click', function() {
-    const d = document.getElementsByClassName('dropdown')[0]
-    console.log(d)
-    d.classList.toggle('is-active')
+Array.from(triggers).forEach(el => {
+  el.addEventListener('click', e => {
+    e.stopPropagation()
+    const parent = e.target.closest('.group--apart')
+    console.log('parent', parent)
+    const dropdown = parent.closest('.dropdown')
+    dropdown.classList.toggle('is-active')
   })
-}
-
+})
