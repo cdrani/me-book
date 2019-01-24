@@ -1,3 +1,6 @@
-= form_for [post, comments] do |f|
-  = f.text_area :content, cols: 50, rows: 5
-  = f.submit 'Add comment'
+.flex.flex--col
+  = form_for [post, comments] do |f|
+    .field
+      = f.text_area :content, class: 'text-area text-box text-box--sm'
+    .field.group--right
+      = f.submit 'Comment', class: 'button is-info is-small'
