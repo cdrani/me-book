@@ -1,8 +1,10 @@
 - if @user == current_user
-  = link_to 'Edit Profile', edit_profile_path(@user.user_name)
-- if @profile.avatar.attached?
-  = image_tag @profile.avatar.variant(resize: '128x128!')
-- if @profile.cover.attached?
-  = image_tag @profile.cover.variant(resize: '1200x300!')
-- @posts.each do |post|
-  = render partial: 'posts/post', locals: {post: post}
+  - if @profile.avatar.attached? && @profile.cover.attached?
+    .profile
+      = image_tag @profile.cover, class: 'image img'
+      .profile-pic.has-text-centered.box.profile-box
+        = image_tag @profile.avatar, class: 'image img img--sm'
+        = link_to 'Edit Profile', edit_profile_path(@user.user_name), class: 'button is-info is-small'
+  .section
+    - @posts.each do |post|
+      = render partial: 'posts/post', locals: {post: post}
