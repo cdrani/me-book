@@ -54,6 +54,10 @@
 
 .btn {
   margin: 10px;
+
+  &--lg {
+    width: 100px; 
+  }
 }
 
 .friends {
@@ -103,6 +107,19 @@
 
 .mt-20 {
   margin-top: 20px;
+}
+
+.mr-5 {
+  margin-right: 50px;
+}
+
+.pl-5 {
+  margin-left: 5px;
+}
+
+.plr-5 {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .mr-20 {
