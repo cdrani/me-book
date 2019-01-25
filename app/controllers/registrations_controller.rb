@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_in_path_for(_resource)
-    'posts'
+   current_user.user_name.to_s
   end
 
   private

@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   before_action :set_user, only: %i[new create show edit update]
 
   def show
-    @profile = @user.profile
+    @profile = current_user.profile || @user.profile
     @posts = Post.timeline.newest
   end
 
