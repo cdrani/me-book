@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    profile = @user.profile.build(profile_prams)
+    profile = @user.profile.build(profile_params)
     if profile.save
       redirect_to profile_path(@user.user_name), success: 'Profile added.'
     else

@@ -19,8 +19,9 @@
         class: 'button btn is-info'
       = link_to 'Cancel', posts_path, class: 'button btn is-danger'
   .dropdown
+  - if post.comments.present?
     .dropdown-content
       = render partial: 'shared/comments', 
         locals: { post: post, comments: post.comments }
-  = render partial: 'shared/comments_form', 
-  locals: { post: post, comments: post.comments.build }
+    = render partial: 'shared/comments_form', 
+    locals: { post: post, comments: post.comments.build }

@@ -1,4 +1,4 @@
-.small-form
+.small-form.center
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = devise_error_messages!
     .field
@@ -19,5 +19,5 @@
       = f.label :password_confirmation, class: 'label'
       = f.password_field :password_confirmation, autocomplete: "new-password", 
         class: 'input'
-    .field
+    .field.group.group--right
       = f.submit 'Sign up', class: 'button is-info is-medium'

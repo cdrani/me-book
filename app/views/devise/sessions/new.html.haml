@@ -1,14 +1,19 @@
-.small-form
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+.small-form.center
+  = form_for(resource, 
+    as: resource_name, 
+    url: session_path(resource_name)) do |f|
     .field
       = f.label :email, class: 'label'
-      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input'
-    .field
+      = f.email_field :email, 
+        autofocus: true, 
+        autocomplete: 'email', 
+        class: 'input'
       = f.label :password, class: 'label'
-      = f.password_field :password, autocomplete: "current-password", class: 'input'
-    - if devise_mapping.rememberable?
-      .field
+      = f.password_field :password, 
+        autocomplete: 'current-password', 
+        class: 'input'
+      - if devise_mapping.rememberable?
         = f.check_box :remember_me, class: 'checkbox'
         = f.label :remember_me, class: 'checkbox'
-    .field
+    .field.group.group--right
       = f.submit 'Sign In', class: 'button is-medium is-info'
