@@ -1,6 +1,6 @@
 .flex.flex--col.mt-20
   = form_for [post, comments] do |f|
     .field
-      = f.text_area :content, class: 'text-area text-box text-box--sm'
-    .field.group--right
-      = f.submit 'Comment', class: 'button is-info'
+      = f.text_area :content, class: 'textarea text-box text-box--sm is-info'
+      .group.group--right
+        = f.submit 'Comment', class: 'button is-info'

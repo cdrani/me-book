@@ -1,14 +1,17 @@
-= form_for profile, url: { action: 'update' } do |f|
-  = f.label :avatar
-  = f.file_field :avatar
-  = f.label :cover
-  = f.file_field :cover
-  = f.label :birthdate
-  = f.date_select :birthdate
-  = f.label :gender
-  = f.text_field :gender
-  = f.label :locale
-  = f.text_field :locale
-  = f.label :bio
-  = f.text_area :bio
-  = f.submit 'Save'
+.small-form.center
+  = form_for profile, url: { action: 'update' } do |f|
+    .field
+      = f.label :avatar, class: 'label'
+      = f.file_field :avatar, class: 'input'
+      = f.label :cover, class: 'label'
+      = f.file_field :cover, class: 'input'
+      = f.label :birthdate, class: 'label'
+      = f.date_select :birthdate, class: 'is-primary'
+      = f.label :gender, class: 'label'
+      = f.text_field :gender, class: 'input'
+      = f.label :locale, class: 'label'
+      = f.text_field :locale, class: 'input'
+      = f.label :bio, class: 'label'
+      = f.text_area :bio, class: 'textarea text-box text-box--sm'
+    .group--right
+      = f.submit 'Save', class: 'button is-info is-medium'

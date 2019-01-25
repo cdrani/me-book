@@ -1,7 +1,7 @@
-.small-form.small-form-lg
+.small-form.small-form--lg
   = form_for post do |f|
     .field
       = f.label :content, class: 'label is-size-4'
       = f.text_area :content, class: 'textarea text-box is-info' 
-    .field.field-left
-      = f.submit 'Post', class: 'button is-medium is-info is-size-4'
+      .field-left
+        = f.submit 'Post', class: 'button is-medium is-info is-size-4'

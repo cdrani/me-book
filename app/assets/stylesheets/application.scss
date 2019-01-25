@@ -10,12 +10,13 @@
 .small-form {
   width: 400px;
   padding: 15px;
+
+  &--lg {
+    margin: 0 auto;
+    width: 600px;
+  }
 }
 
-.small-form-lg {
-  margin: 0 auto;
-  width: 600px;
-}
 
 .text-box {
   display: inline;
@@ -41,19 +42,20 @@
   }
 }
 
-
 .right {
   align-self: flex-end;
 }
 
-.group--apart {
+.group {
   display: flex;
-  justify-content: space-between;
-}
 
-.group--right {
-  display: flex;
-  justify-content: flex-end;
+  &--apart {
+    justify-content: space-between;
+  }
+
+  &--right {
+    justify-content: flex-end;
+  }
 }
 
 .btn {
@@ -107,6 +109,10 @@
 
 .mt-20 {
   margin-top: 20px;
+}
+
+.center {
+  margin: 0 auto;
 }
 
 .dropdown-content {
