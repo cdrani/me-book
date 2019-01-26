@@ -1,24 +1,48 @@
-# README
+# me-book
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Live: [me-book](https://me-book.herokuapp.com)
 
-Things you may want to cover:
 
-* Ruby version
+## Fully-featured social media app built with Ruby on Rails.
+
+* Social media site for content sharing: Users can sign up securely, 
+  create a profile, add friends, post, comment, and like other content.
+* Uses Devise for user registration.
+* Implements photo uploading with active_storage.
+* Deployed on Heroku
+
+
+## Getting started
 
 * System dependencies
 
-* Configuration
+```
+  Ruby version: 2.5.1
+  Rails version: 5.2.1
+  Bundler version: 1.16.1
+```
 
-* Database creation
+To get started with the app, clone the repo and then install the needed gems:
 
-* Database initialization
+```
+ > bundle install --without production
+```
 
-* How to run the test suite
+Next, migrate the database:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+ > rails db:migrate
+```
 
-* Deployment instructions
+Finally run the app in a local server:
 
-* ...
+```
+> rails server
+```
+
+Open your browser at `localhost:3000`.
+
+
+## Authors
+
+* **Charles Drani - [cdrainxv](https://github.com/cdrainxv)
