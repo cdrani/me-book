@@ -1,18 +1,17 @@
 # frozen_string_literal: true
 
 class LikesController < ApplicationController
-  before_action :find_post
+  before_action :find_post, only: [:like]
 
-  def create
+  def like
     if already_liked?
-      flash[:notice] = 'You have already like this post! \
+      flash[:notice] = 'You have already liked this post! \
       Look for other posts to like.'
     else
       @post.likes.create(user_id: current_user.id)
       like = Like.where(post_id: @post.id)
       create_notification(@post, like)
     end
-    redirect_to posts_path
   end
 
   private
@@ -28,7 +27,7 @@ class LikesController < ApplicationController
   end
 
   def find_post
-    @post = Post.find(params[:post_id])
+    @post = Post.find(id: params[:post_id])
   end
 
   def already_liked?

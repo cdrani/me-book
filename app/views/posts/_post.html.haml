@@ -8,7 +8,10 @@
   %h1.title.is-size-3= post.content
   - if post.user.id == current_user.id
     .group.group--right
-      = link_to 'Edit', post_path(post), class: 'button btn is-warning'
+      %button.button.btn.btn--lg.is-info
+        %span.icon
+          %span= "#{ post.likes.count } Likes" 
+      = link_to 'Edit', edit_post_path(post), class: 'button btn is-warning'
       = link_to 'Delete', 
         post_path(post),
         method: :delete, 
@@ -19,13 +22,13 @@
         %span.icon
           %span= post.likes.count
           %i.far.fa-thumbs-up.is-white.pl-5
-        = link_to '', post_likes_path(post), method: :post
-      = link_to 'Cancel', profile_path(post.user.user_name), 
+        = button_to 'Like', post_like_path(post.id), method: :post
+      = link_to 'Cancel', profile_path(current_user.user_name), 
         class: 'button btn is-danger'
   .dropdown
   - if post.comments.present?
     .dropdown-content
       = render partial: 'shared/comments', 
         locals: { post: post, comments: post.comments }
-    = render partial: 'shared/comments_form', 
-    locals: { post: post, comments: post.comments.build }
+  = render partial: 'shared/comments_form', 
+  locals: { post: post, comments: post.comments.build }
