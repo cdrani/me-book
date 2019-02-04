@@ -7,9 +7,10 @@
       %a.navbar-link Notifications(#{current_user.notifications.where(read: false).count})
       - if current_user.notifications.where(read: false).exists?
         .navbar-dropdown
-          = render current_user.notifications.where(read: false).last(5)
-          - if current_user.notifications.where(read: false).present?
-            %a.navbar-item= link_to 'View All', notifications_path
+          = render partial: 'shared/notification', 
+            locals: {notifications: current_user.notifications.where(read: false).last(5)}
+          %hr.navbar-divider
+          = link_to 'View All', notifications_path, class: 'navbar-item'
     = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-item'
 - else 
   %nav.section.section-sm.navbar.group.group--right
