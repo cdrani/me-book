@@ -19,20 +19,21 @@
   display: inline;
   height: 300px;
   font-size: 1.5rem;
-  line-height: 1.5rem;
+  line-height: 2rem;
   margin-bottom: 10px;
 
   &--sm {
     width: 100%;
     height: 100px;
     padding: 10px;
-    line-height: 1rem;
+    line-height: 1.5rem;
+    font-size: .5rem;
   }
 }
 
 .flex {
   display: flex;
-  
+
   &--col {
     flex-direction: column;
     justify-content: space-between;
@@ -59,7 +60,7 @@
   margin: 10px;
 
   &--lg {
-    width: 100px; 
+    width: 100px;
   }
 }
 
@@ -75,16 +76,11 @@
 }
 
 .profile {
-  position: relative;
-  width: 100%;
-}
-
-.profile-pic {
-  position: absolute;
   display: flex;
-  left: 20px;
-  top: 75px;
-  max-width: 128px;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .img {
@@ -92,15 +88,18 @@
   height: 300px;
 
   &--sm {
-    height: 96px;
+    height: 256px;
+    width: 256px;
   }
 }
 
 .profile-box {
+  position: absolute;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding: .5rem;
+  width: 256px;
+  height: 256px;
+  padding: 0.5rem;
 }
 
 .section-sm {

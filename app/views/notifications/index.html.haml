@@ -1,1 +1,1 @@
-= render @notifications.where(read: false)
+= render partial: 'shared/notification', locals: {notifications: @notifications}
