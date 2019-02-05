@@ -16,11 +16,7 @@
         data: {confirm: 'Are you sure?'}, class: 'button btn is-danger'
   - else
     .group.group--right
-      %button.button.btn.btn--lg.is-info.group.group--right
-        %span.icon
-          %span= post.likes.count
-          %i.far.fa-thumbs-up.is-white.pl-5
-        = button_to 'Like', post_like_path(post.id), method: :post
+      = link_to "#{post.likes.count}", post_like_path(post.id), method: :post, class: 'button btn btn--lg is-info far fa-thumbs-up is-white pl-10 group group--right'
       = link_to 'Cancel', profile_path(current_user.user_name), 
         class: 'button btn is-danger'
   .dropdown(id="#{post.id}")

@@ -16,6 +16,15 @@
   }
 }
 
+.fa-thumbs-up:before {
+  content: "";
+}
+
+.fa-thumbs-up:after {
+  content: "";
+  padding-left: 5px;
+}
+
 .none {
   display: none;
 }
