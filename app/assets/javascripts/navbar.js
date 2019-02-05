@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const $navBarEnd = document.getElementById('navBarEnd')
   const $navItemGroup = document.getElementById('navItemGroup')
   const $navBarLink = document.getElementById('navBarLink')
+  const $dropdownTriggers = document.getElementsByClassName('dropdown-trigger')
 
   $navBurger.addEventListener('click', function(el) {
     el.target.classList.toggle('is-active')
@@ -29,4 +30,23 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     false
   )
+
+  const getClosest = (elem, selector) => {
+    for (; elem && elem !== document; elem = elem.parentNode) {
+      if (elem.matches(selector)) return elem
+    }
+    return null
+  }
+
+  Array.from($dropdownTriggers).forEach(trigger => {
+    trigger.addEventListener(
+      'click',
+      e => {
+        e.preventDefault()
+        $dropdown = document.getElementById(e.target.dataset.trigger)
+        $dropdown.classList.toggle('is-active')
+      },
+      false
+    )
+  })
 })

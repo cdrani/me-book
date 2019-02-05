@@ -2,6 +2,11 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.content--sm {
+  height: 138px;
+  overflow-y: scroll;
+}
+
 .small-form {
   width: 400px;
   padding: 15px;
