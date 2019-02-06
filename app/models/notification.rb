@@ -10,4 +10,8 @@ class Notification < ApplicationRecord
   validates :post_id, presence: true
   validates :identifier, presence: true
   validates :notice_type, presence: true
+
+  def to_s
+    display_name
+  end
 end
