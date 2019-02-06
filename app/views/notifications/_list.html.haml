@@ -1,0 +1,5 @@
+.section
+  %p.title.is-size-3.menu-label.has-text-centered Notifications
+  %ul.menu-list
+    - notifications.each do |notification|
+      %li.is-size-3.has-text-centered= link_to "#{notification.notified_by.user_name.capitalize} #{notification.notice_type}ed #{p 'on' if notification.notice_type != 'like'} your post", link_through_path(notification), class: 'navbar-item is-size-3'

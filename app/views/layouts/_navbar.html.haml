@@ -1,6 +1,7 @@
 %nav.navbar.section.section-sm
   .navbar-brand
-    = link_to "#{current_user.user_name.upcase}", profile_path(current_user.user_name), class: 'navbar-item'
+    - if user_signed_in?
+      = link_to "#{current_user.user_name.upcase}", profile_path(current_user.user_name), class: 'navbar-item'
     %a.navbar-burger.burger{"data-target": "navMenu"}
       %span(:aria-hidden: true)
       %span(:aria-hidden: true)

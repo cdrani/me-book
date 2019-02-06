@@ -3,7 +3,7 @@
     .notification
       = link_to comment.user.user_name, profile_path(comment.user.user_name), 
         class: 'is-size-5'
-      %p.is-size-5= comment.content
+      %p.is-size-4= comment.content
       - if comment.user == current_user
         .group.group--right
           = link_to 'Delete', 

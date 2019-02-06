@@ -1,11 +1,11 @@
-.notification.flex.flex--col
+.notification.flex.flex--col.posts-content
   .group.group--apart
     = link_to post.user.user_name, profile_path(post.user.user_name), 
       class: 'is-size-4'
     - if post.comments.exists?
       .dropdown-trigger        
         %button.button.fas.fa-angle-down(data-trigger="#{post.id}")
-  %p1.is-size-5= post.content
+  %p.is-size-4= post.content
   - if post.user.id == current_user.id
     .group.group--right
       %button.button.btn.btn--lg.is-info
