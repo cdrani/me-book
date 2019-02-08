@@ -8,13 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const $flashMessage = document.getElementById('flashMessage')
   const $profile = document.getElementById('profile')
 
-  if ($flashMessage || $profile) {
-    setTimeout(() => {
-      $flashMessage.style.margin = '70px 0 15px 0'
-      $flashMessage.style.display = 'none'
-      $profile.style.marginTop = '0'
-    }, 2500)
-  }
+  setTimeout(() => {
+    $flashMessage.style.margin = '70px 0 15px 0'
+    $flashMessage.style.display = 'none'
+    $profile.style.marginTop = '0'
+  }, 2500)
 
   if ($navBurger) {
     $navBurger.addEventListener('click', function(el) {
@@ -25,45 +23,34 @@ document.addEventListener('DOMContentLoaded', function() {
     })
   }
 
-  if ($navBarLink) {
-    $navBarLink.addEventListener(
-      'mouseenter',
+  $navBarLink.addEventListener(
+    'mouseenter',
+    e => {
+      e.stopPropagation()
+      $navItemGroup.classList.remove('none')
+      $navItemGroup.style = 'background-color: white'
+    },
+    false
+  )
+
+  $navBarLink.addEventListener(
+    'mouseleave',
+    e => {
+      e.stopPropagation()
+      $navItemGroup.classList.add('none')
+    },
+    false
+  )
+
+  Array.from($dropdownTriggers).forEach(trigger => {
+    trigger.addEventListener(
+      'click',
       e => {
-        e.stopPropagation()
-        $navItemGroup.classList.remove('none')
-        $navItemGroup.style = 'background-color: white'
+        e.preventDefault()
+        $dropdown = document.getElementById(e.target.dataset.trigger)
+        $dropdown.classList.toggle('is-active')
       },
       false
     )
-
-    $navBarLink.addEventListener(
-      'mouseleave',
-      e => {
-        e.stopPropagation()
-        $navItemGroup.classList.add('none')
-      },
-      false
-    )
-  }
-
-  const getClosest = (elem, selector) => {
-    for (; elem && elem !== document; elem = elem.parentNode) {
-      if (elem.matches(selector)) return elem
-    }
-    return null
-  }
-
-  if ($dropdownTriggers) {
-    Array.from($dropdownTriggers).forEach(trigger => {
-      trigger.addEventListener(
-        'click',
-        e => {
-          e.preventDefault()
-          $dropdown = document.getElementById(e.target.dataset.trigger)
-          $dropdown.classList.toggle('is-active')
-        },
-        false
-      )
-    })
-  }
+  })
 })

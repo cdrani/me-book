@@ -13,7 +13,8 @@ class ProfilesController < ApplicationController
   def create
     profile = @profile.build(profile_params)
     if profile.save
-      redirect_to profile_path(@user.user_name), success: 'Profile added.'
+      flash[:success] = 'Profile created!'
+      redirect_to profile_path(@user.user_name)
     else
       render :new
     end
@@ -24,6 +25,7 @@ class ProfilesController < ApplicationController
       flash[:success] = 'Profile updated!'
       redirect_to profile_path(@user.user_name)
     else
+      flash[:alert] = 'Profile was not updated!'
       render :edit
     end
   end

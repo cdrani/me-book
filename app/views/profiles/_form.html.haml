@@ -7,7 +7,7 @@
       = f.label :cover, class: 'file-label'
       = f.file_field :cover, class: 'input'
       = f.label :birthdate, class: 'label'
-      = f.date_select :birthdate
+      = f.date_select :birthdate, start_year: Date.current.year - 13, end_year: Date.current.year - 80, default: {month: Date.current.month, day: Date.current.day}
       = f.label :gender, class: 'label'
       = f.text_field :gender, class: 'input'
       = f.label :locale, class: 'label'
