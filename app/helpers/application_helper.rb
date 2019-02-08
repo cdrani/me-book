@@ -24,8 +24,4 @@ module ApplicationHelper
      alert: 'is-danger'
     }[flash_type.to_sym] || flash_type.to_s
   end
-
-  def alert_prefix(flash_type)
-    flash_type.to_s == 'success' ? 'Success!' : 'Alert!'
-  end
 end

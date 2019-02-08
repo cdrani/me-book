@@ -96,13 +96,21 @@
   padding-right: 10px;
 }
 
+.flash_message {
+  display: flex;
+  align-items: center;
+}
+
+.notification--slim {
+  padding: 10px;
+}
+
 .profile {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 90%;
   margin: 0 auto;
-  margin-top: 60px;
 }
 
 .img {
@@ -136,6 +144,10 @@
 
 .mt-20 {
   margin-top: 20px;
+}
+
+.mt-80 {
+  margin-top: 80px;
 }
 
 .mr-5 {

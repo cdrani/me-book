@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     if @comment.save
       create_notification(@post, @comment)
       flash[:success] = 'Comment successfully posted!'
-      redirect_to posts_path
+      redirect_to profile_path(current_user.user_name)
     else
       flash[:alert] = 'Comment could not be added to post.'
       render @post
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
 
     @comment.destroy
     flash[:success] = 'Comment deleted!'
-    redirect_to posts_path
+    redirect_to profile_path(current_user.user_name)
   end
 
   private

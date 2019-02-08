@@ -35,7 +35,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:success]: 'Post updated!'
+      flash[:success] = 'Post updated!'
       redirect_to profile_path(current_user.user_name)
     else
       flash[:alert] = 'Post not updated.'
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     flash[:success] = 'Post deleted.'
-    redirect_to posts_path
+    redirect_to profile_path(current_user.user_name)
   end
 
   def like
@@ -60,6 +60,7 @@ class PostsController < ApplicationController
         create_notification(@like_post, like)
       end
     end
+    redirect_to profile_path(current_user.user_name)
   end
 
   private
