@@ -35,8 +35,8 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to profile_path(current_user.user_name), 
-        success: 'Post updated.'
+      flash[:success]: 'Post updated!'
+      redirect_to profile_path(current_user.user_name)
     else
       flash[:alert] = 'Post not updated.'
       render :edit
@@ -45,7 +45,8 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path, success: 'Post deleted.'
+    flash[:success] = 'Post deleted.'
+    redirect_to posts_path
   end
 
   def like

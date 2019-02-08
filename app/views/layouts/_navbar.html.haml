@@ -1,4 +1,4 @@
-%nav.nav.navbar.section.section-sm
+%nav.nav.navbar.section.section-sm.is-fixed-top
   .navbar-brand
     - if user_signed_in?
       = link_to "#{current_user.user_name.upcase}", profile_path(current_user.user_name), class: 'navbar-item'
