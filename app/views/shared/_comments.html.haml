@@ -1,13 +1,12 @@
 - comments.each do |comment|
   .dropdown-item
-    .notification
-      = link_to comment.user.user_name, profile_path(comment.user.user_name), 
-        class: 'is-size-5'
-      %p.is-size-4= comment.content
-      - if comment.user == current_user
-        .group.group--right
-          = link_to 'Delete', 
-            post_comment_path(post, comment), 
-            method: :delete, 
-            data: { confirm: 'Are you sure?' },
-            class: 'button is-danger right'
+    = link_to comment.user.user_name, profile_path(comment.user.user_name), 
+      class: 'is-size-5'
+    %p.is-size-4= comment.content
+    - if comment.user == current_user
+      .group.group--right
+        = link_to 'Delete', 
+          post_comment_path(post, comment), 
+          method: :delete, 
+          data: { confirm: 'Are you sure?' },
+          class: 'button is-danger right'

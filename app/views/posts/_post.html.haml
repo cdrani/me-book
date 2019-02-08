@@ -21,7 +21,7 @@
         class: 'button btn is-danger'
   .dropdown(id="#{post.id}")
     - if post.comments.present?
-      .dropdown-menu
+      .dropdown-menu.full-width
         .dropdown-content.content--sm
           = render partial: 'shared/comments', 
             locals: { post: post, comments: post.comments }

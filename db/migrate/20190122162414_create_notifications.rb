@@ -5,7 +5,7 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
     create_table :notifications do |t|
       t.references :user, foreign_key: true, index: true
       t.references :notified_by, index: true
-      t.references :post, foreign_key: true, index: true
+      t.references :post, null: true, foreign_key: true, index: true
       t.integer :identifier
       t.string :notice_type
       t.boolean :read, default: false

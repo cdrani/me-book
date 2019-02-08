@@ -25,7 +25,8 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to @post, success: 'Successfully posted!'
+      redirect_to profile_path(current_user.user_name), 
+        success: 'Successfully posted!'
     else
       flash[:alert] = 'Post error.'
       render :new
@@ -34,7 +35,8 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path, success: 'Post updated.'
+      redirect_to profile_path(current_user.user_name), 
+        success: 'Post updated.'
     else
       flash[:alert] = 'Post not updated.'
       render :edit

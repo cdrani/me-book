@@ -1,19 +1,17 @@
 # frozen_string_literal: true
 
 class ProfilesController < ApplicationController
-  before_action :set_user, only: %i[new create show edit update]
+  before_action :set_user
+  before_action :set_profile
 
   def show
-    @profile = @user.profile
     @posts = Post.timeline.newest
   end
 
-  def edit
-    @profile = @user.profile
-  end
+  def edit; end
 
   def create
-    profile = @user.profile.build(profile_params)
+    profile = @profile.build(profile_params)
     if profile.save
       redirect_to profile_path(@user.user_name), success: 'Profile added.'
     else
@@ -22,7 +20,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    if @user.profile.update(profile_params)
+    if @profile.update(profile_params)
       flash[:success] = 'Profile updated!'
       redirect_to profile_path(@user.user_name)
     else
@@ -46,5 +44,9 @@ class ProfilesController < ApplicationController
 
   def set_user
     @user = User.find_by(user_name: params[:user_name])
+  end
+
+  def set_profile
+    @profile = User.find_by(user_name: params[:user_name]).profile
   end
 end

@@ -14,14 +14,12 @@ class UsersController < ApplicationController
     return unless current_user.accept_request(@friend)
 
     flash[:success] = "#{@friend.user_name} added to friends list"
-    redirect_to users_path
   end
 
   def request_friend
     return unless current_user.friend_request(@friend)
 
     flash[:success] = "Friend request sent to #{@friend.user_name}"
-    redirect_to users_path
   end
 
   private

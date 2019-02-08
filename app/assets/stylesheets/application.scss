@@ -2,8 +2,15 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.nav {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0;
+}
+
 .content--sm {
-  height: 138px;
+  margin-top: 15px;
+  height: 125px;
   overflow-y: scroll;
 }
 
@@ -17,11 +24,11 @@
 }
 
 .fa-thumbs-up:before {
-  content: "";
+  content: '';
 }
 
 .fa-thumbs-up:after {
-  content: "";
+  content: '';
   padding-left: 5px;
 }
 
@@ -41,7 +48,7 @@
     height: 100px;
     padding: 10px;
     line-height: 1.5rem;
-    font-size: .5rem;
+    font-size: 0.5rem;
   }
 }
 
@@ -151,6 +158,6 @@
   margin: 0 auto;
 }
 
-.dropdown-content {
+.full-width {
   width: 100%;
 }
