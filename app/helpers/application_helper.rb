@@ -18,4 +18,14 @@ module ApplicationHelper
       "#{name} #{type}ed on your post"
     end
   end
+
+  def alert_for(flash_type)
+    {success: 'is-success', 
+     alert: 'is-danger'
+    }[flash_type.to_sym] || flash_type.to_s
+  end
+
+  def alert_prefix(flash_type)
+    flash_type.to_s == 'success' ? 'Success!' : 'Alert!'
+  end
 end
