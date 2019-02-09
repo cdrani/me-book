@@ -13,15 +13,15 @@
         = link_to 'New Post', new_post_path, class: 'navbar-item'
         = link_to 'Profile', profile_path(current_user.user_name), class: 'navbar-item'
         = link_to 'Users', users_path, class: 'navbar-item'
-        #navBarLink.navbar-item.has-dropdown.is-hoverable
+        #navBarLink.navbar-menu.navbar-item.has-dropdown
           %a.navbar-link Notifications(#{current_user.notifications.where(read: false).count})
           - if current_user.notifications.where(read: false).exists?
-            #navItemGroup.navbar-dropdown.none
+            #navItemGroup.navbar-dropdown
               = render partial: 'shared/notification', 
                 locals: {notifications: current_user.notifications.where(read: false).last(5)}
               %hr.navbar-divider
               = link_to 'View All', notifications_path, class: 'navbar-item'
-        = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-item'
+        = link_to 'Signout', destroy_user_session_path, method: :delete, class: 'navbar-item'
       - else 
         = link_to 'Signin', new_user_session_path, class: 'navbar-item mr-20'
         = link_to 'Signup', new_user_registration_path, class: 'navbar-item' 

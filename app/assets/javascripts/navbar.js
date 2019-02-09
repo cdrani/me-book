@@ -8,49 +8,33 @@ document.addEventListener('DOMContentLoaded', function() {
   const $flashMessage = document.getElementById('flashMessage')
   const $profile = document.getElementById('profile')
 
-  setTimeout(() => {
-    $flashMessage.style.margin = '70px 0 15px 0'
-    $flashMessage.style.display = 'none'
-    $profile.style.marginTop = '0'
-  }, 2500)
+  if ($flashMessage) {
+    setTimeout(() => {
+      $flashMessage.style.margin = '70px 0 15px 0'
+      $flashMessage.style.display = 'none'
+      $profile.style.marginTop = '0'
+    }, 2500)
+  }
 
   if ($navBurger) {
-    $navBurger.addEventListener('click', function(el) {
-      el.target.classList.toggle('is-active')
+    $navBurger.addEventListener('click', e => {
+      e.stopPropagation()
+      e.target.classList.toggle('is-active')
       $target.classList.toggle('is-active')
-      $navBarEnd.style =
-        'display: flex; justify-content: flex-end; height: 50px'
     })
   }
 
-  $navBarLink.addEventListener(
-    'mouseenter',
-    e => {
-      e.stopPropagation()
-      $navItemGroup.classList.remove('none')
-      $navItemGroup.style = 'background-color: white'
-    },
-    false
-  )
-
-  $navBarLink.addEventListener(
-    'mouseleave',
-    e => {
-      e.stopPropagation()
-      $navItemGroup.classList.add('none')
-    },
-    false
-  )
-
-  Array.from($dropdownTriggers).forEach(trigger => {
-    trigger.addEventListener(
-      'click',
-      e => {
-        e.preventDefault()
-        $dropdown = document.getElementById(e.target.dataset.trigger)
-        $dropdown.classList.toggle('is-active')
-      },
-      false
-    )
-  })
+  if ($dropdownTriggers) {
+    Array.from($dropdownTriggers).forEach(trigger => {
+      trigger.addEventListener(
+        'click',
+        e => {
+          e.preventDefault()
+          const $dropdown = document.getElementById(e.target.dataset.trigger)
+          $dropdown.classList.toggle('is-active')
+        },
+        false
+      )
+    })
+  }
 })
