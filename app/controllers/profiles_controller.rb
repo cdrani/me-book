@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile
 
   def show
-    @posts = Post.timeline.newest
+    @posts = Post.friends_and_i_posts(@user).newest
   end
 
   def edit; end

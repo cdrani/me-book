@@ -7,11 +7,7 @@ class PostsController < ApplicationController
   before_action :find_post_to_like, only: %i[like]
 
   def index
-    @posts = if current_user.friends.present?
-               Post.timeline.newest
-             else
-               current_user.posts
-             end
+    @posts = Post.friends_and_i_posts(current_user).newest
   end
 
   def new

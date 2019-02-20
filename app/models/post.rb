@@ -8,6 +8,10 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  scope :timeline, -> { joins(:user, user: [:friends]).distinct }
-  scope :newest, -> { order(created_at: :desc) }
+  scope :friends_and_i_posts, ->(user) {
+    ids = user.friend_ids << user.id
+    Post.where(user_id: ids)
+  }
+
+  scope :newest, ->() { order(created_at: :desc) }
 end
