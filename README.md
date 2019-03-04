@@ -41,8 +41,3 @@ Finally run the app in a local server:
 ```
 
 Open your browser at `localhost:3000`.
-
-
-## Authors
-
-* **Charles Drani - [cdrainxv](https://github.com/cdrainxv)
